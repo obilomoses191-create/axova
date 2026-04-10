@@ -4,109 +4,28 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Axova - AI Automation Platform</title>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-const EMAILJS_PUBLIC_KEY  = 'BETBwCkk8rde3odvp';
-const EMAILJS_SERVICE_ID  = 'service_es4iiiz';
-const EMAILJS_TEMPLATE_ID = 'template_5hkbkgm';
-const FORMSPREE_URL       = 'https://formspree.io/f/xzdkwvoz';
-emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:#050810;
-  color:#f0eeea;
-  font-family:Arial,Helvetica,sans-serif;
-  font-size:16px;
-  line-height:1.6;
-}
-
-/* NAV */
-nav{
-  position:sticky;top:0;z-index:100;
-  background:rgba(5,8,16,0.95);
-  border-bottom:1px solid rgba(0,212,200,0.2);
-  padding:1rem 2rem;
-  display:flex;justify-content:space-between;align-items:center;
-}
-.logo{
-  font-size:1.6rem;font-weight:bold;font-style:italic;
-  color:#00d4c8;text-decoration:none;
-}
-.nav-btn{
-  background:transparent;border:1px solid #00d4c8;
-  color:#00d4c8;padding:0.5rem 1.2rem;
-  font-size:0.85rem;cursor:pointer;
-  font-weight:bold;letter-spacing:0.05em;
-}
-.nav-btn:hover{background:#00d4c8;color:#050810}
-
-/* HERO */
-.hero{
-  padding:5rem 2rem 4rem;
-  text-align:center;
-  background:radial-gradient(ellipse at center top, rgba(0,212,200,0.12) 0%, transparent 60%);
-  border-bottom:1px solid rgba(0,212,200,0.15);
-}
-.badge{
-  display:inline-block;
-  background:rgba(0,212,200,0.1);
-  border:1px solid rgba(0,212,200,0.3);
-  color:#00d4c8;padding:0.4rem 1rem;
-  font-size:0.75rem;letter-spacing:0.15em;
-  text-transform:uppercase;margin-bottom:2rem;
-}
-.hero h1{
-  font-size:clamp(2.5rem,7vw,5.5rem);
-  font-weight:900;line-height:1.05;
-  color:#f0eeea;margin-bottom:1.5rem;
-}
+body{background:#050810;color:#f0eeea;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.6}
+nav{position:sticky;top:0;z-index:100;background:rgba(5,8,16,0.97);border-bottom:1px solid rgba(0,212,200,0.2);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.6rem;font-weight:bold;font-style:italic;color:#00d4c8;text-decoration:none}
+.nav-btn{background:transparent;border:1px solid #00d4c8;color:#00d4c8;padding:0.5rem 1.2rem;font-size:0.85rem;cursor:pointer;font-weight:bold}
+.hero{padding:5rem 2rem 4rem;text-align:center;background:radial-gradient(ellipse at center top,rgba(0,212,200,0.1) 0%,transparent 60%);border-bottom:1px solid rgba(0,212,200,0.15)}
+.badge{display:inline-block;background:rgba(0,212,200,0.1);border:1px solid rgba(0,212,200,0.3);color:#00d4c8;padding:0.4rem 1rem;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:2rem}
+.hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:900;line-height:1.05;color:#f0eeea;margin-bottom:1.5rem}
 .hero h1 span{color:#00d4c8}
-.hero p{
-  font-size:1.1rem;color:rgba(240,238,234,0.6);
-  max-width:500px;margin:0 auto 2.5rem;line-height:1.8;
-}
-.hero-btn{
-  display:inline-block;
-  background:linear-gradient(135deg,#00d4c8,#e2b96a);
-  color:#050810;padding:1rem 2.5rem;
-  font-size:1rem;font-weight:bold;
-  border:none;cursor:pointer;letter-spacing:0.05em;
-  text-decoration:none;
-}
-.hero-btn:hover{opacity:0.9}
+.hero p{font-size:1.1rem;color:rgba(240,238,234,0.6);max-width:500px;margin:0 auto 2.5rem;line-height:1.8}
+.hero-btn{display:inline-block;background:linear-gradient(135deg,#00d4c8,#e2b96a);color:#050810;padding:1rem 2.5rem;font-size:1rem;font-weight:bold;border:none;cursor:pointer;text-decoration:none}
 .hero-note{display:block;font-size:0.8rem;color:rgba(240,238,234,0.35);margin-top:1rem}
-
-/* STATS */
-.stats{
-  display:flex;justify-content:center;flex-wrap:wrap;
-  gap:0;border-top:1px solid rgba(0,212,200,0.15);
-  margin-top:4rem;padding-top:3rem;
-}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;border-top:1px solid rgba(0,212,200,0.15);margin-top:4rem;padding-top:3rem}
 .stat{padding:1rem 2.5rem;text-align:center}
 .stat-n{font-size:2.8rem;font-weight:900;color:#f0eeea}
 .stat-n b{color:#00d4c8}
 .stat-l{font-size:0.7rem;color:rgba(240,238,234,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.3rem}
-
-/* TICKER */
-.ticker{
-  overflow:hidden;padding:0.9rem 0;
-  background:rgba(0,212,200,0.03);
-  border-top:1px solid rgba(0,212,200,0.1);
-  border-bottom:1px solid rgba(0,212,200,0.1);
-  white-space:nowrap;
-}
-.ticker-inner{
-  display:inline-block;
-  animation:tick 30s linear infinite;
-  font-size:0.7rem;letter-spacing:0.15em;
-  text-transform:uppercase;color:rgba(0,212,200,0.45);
-}
+.ticker{overflow:hidden;padding:0.9rem 0;background:rgba(0,212,200,0.03);border-top:1px solid rgba(0,212,200,0.1);border-bottom:1px solid rgba(0,212,200,0.1);white-space:nowrap}
+.ticker-inner{display:inline-block;animation:tick 30s linear infinite;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(0,212,200,0.45)}
 .ticker-inner span{margin:0 2.5rem}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* FEATURES */
 .features{padding:5rem 2rem;text-align:center}
 .section-tag{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#00d4c8;margin-bottom:1rem}
 .section-title{font-size:clamp(1.8rem,4vw,3rem);font-weight:900;color:#f0eeea;margin-bottom:3rem;line-height:1.1}
@@ -117,94 +36,38 @@ nav{
 .card-icon{font-size:1.5rem;margin-bottom:1rem}
 .card-title{font-size:1rem;font-weight:bold;color:#f0eeea;margin-bottom:0.6rem}
 .card-desc{font-size:0.82rem;color:rgba(240,238,234,0.5);line-height:1.75}
-
-/* WAITLIST */
-.waitlist{
-  padding:6rem 2rem;text-align:center;
-  background:radial-gradient(ellipse at center bottom, rgba(0,212,200,0.08) 0%, transparent 60%);
-  border-top:1px solid rgba(0,212,200,0.15);
-}
-.wl-card{
-  max-width:480px;margin:2.5rem auto 0;
-  background:#0a0f1e;border:1px solid rgba(0,212,200,0.2);
-  padding:2.5rem;position:relative;
-}
-.wl-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,#00d4c8,#e2b96a,transparent);
-}
-
-/* PROGRESS */
+.waitlist{padding:6rem 2rem;text-align:center;background:radial-gradient(ellipse at center bottom,rgba(0,212,200,0.08) 0%,transparent 60%);border-top:1px solid rgba(0,212,200,0.15)}
+.wl-card{max-width:480px;margin:2.5rem auto 0;background:#0a0f1e;border:1px solid rgba(0,212,200,0.2);padding:2.5rem;position:relative}
+.wl-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00d4c8,#e2b96a,transparent)}
 .progress{display:flex;gap:6px;margin-bottom:2rem}
 .pd{height:3px;flex:1;background:rgba(255,255,255,0.1)}
 .pd.active{background:linear-gradient(90deg,#00d4c8,#e2b96a)}
 .pd.done{background:#00d4c8}
-
-/* STEPS */
 .step{display:none}
 .step.show{display:block}
 .step-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#00d4c8;margin-bottom:0.5rem}
 .step-title{font-size:1.5rem;font-weight:900;color:#f0eeea;margin-bottom:0.5rem}
 .step-sub{font-size:0.82rem;color:rgba(240,238,234,0.5);margin-bottom:1.8rem;line-height:1.7}
 .step-sub strong{color:#e2b96a}
-
-/* EMAIL INPUT */
 .email-row{display:flex;border:1px solid rgba(0,212,200,0.3)}
 .email-row:focus-within{border-color:#00d4c8}
-.email-in{
-  flex:1;background:transparent;border:none;outline:none;
-  color:#f0eeea;font-size:0.9rem;padding:0.9rem 1rem;
-}
+.email-in{flex:1;background:transparent;border:none;outline:none;color:#f0eeea;font-size:0.9rem;padding:0.9rem 1rem}
 .email-in::placeholder{color:rgba(240,238,234,0.25)}
-.send-btn{
-  background:linear-gradient(135deg,#00d4c8,#e2b96a);
-  color:#050810;border:none;
-  font-size:0.7rem;font-weight:bold;letter-spacing:0.08em;
-  padding:0.9rem 1.2rem;cursor:pointer;white-space:nowrap;
-}
+.send-btn{background:linear-gradient(135deg,#00d4c8,#e2b96a);color:#050810;border:none;font-size:0.7rem;font-weight:bold;letter-spacing:0.08em;padding:0.9rem 1.2rem;cursor:pointer;white-space:nowrap}
 .send-btn:disabled{opacity:0.5}
-
-/* OTP */
 .otp-row{display:flex;gap:0.5rem;justify-content:center;margin:1.5rem 0}
-.otp-d{
-  width:50px;height:60px;
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(0,212,200,0.2);
-  color:#f0eeea;font-size:1.5rem;font-weight:bold;
-  text-align:center;outline:none;
-}
+.otp-d{width:50px;height:60px;background:rgba(255,255,255,0.04);border:1px solid rgba(0,212,200,0.2);color:#f0eeea;font-size:1.5rem;font-weight:bold;text-align:center;outline:none}
 .otp-d:focus{border-color:#00d4c8}
-.verify-btn{
-  width:100%;
-  background:linear-gradient(135deg,#00d4c8,#e2b96a);
-  color:#050810;border:none;
-  font-size:0.82rem;font-weight:bold;letter-spacing:0.08em;
-  padding:1rem;cursor:pointer;margin-bottom:0.8rem;
-}
+.verify-btn{width:100%;background:linear-gradient(135deg,#00d4c8,#e2b96a);color:#050810;border:none;font-size:0.82rem;font-weight:bold;padding:1rem;cursor:pointer;margin-bottom:0.8rem}
 .verify-btn:disabled{opacity:0.5}
-.resend-btn{
-  width:100%;background:transparent;
-  border:1px solid rgba(0,212,200,0.2);
-  color:rgba(240,238,234,0.4);
-  font-size:0.75rem;padding:0.7rem;cursor:pointer;
-}
-.resend-btn:hover:not(:disabled){border-color:#00d4c8;color:#00d4c8}
+.resend-btn{width:100%;background:transparent;border:1px solid rgba(0,212,200,0.2);color:rgba(240,238,234,0.4);font-size:0.75rem;padding:0.7rem;cursor:pointer}
 .resend-btn:disabled{opacity:0.4}
 .countdown{font-size:0.7rem;color:rgba(240,238,234,0.35);text-align:center;margin-top:0.6rem}
-
-/* MSG */
 .msg{display:none;font-size:0.78rem;padding:0.8rem 1rem;margin-top:0.8rem;text-align:left;line-height:1.6}
 .msg.err{background:rgba(255,87,87,0.08);border-left:2px solid #ff5757;color:#ff9999}
 .msg.ok{background:rgba(0,212,200,0.06);border-left:2px solid #00d4c8;color:rgba(240,238,234,0.7)}
 .msg.show{display:block}
-
-/* SUCCESS */
-.success-icon{
-  width:60px;height:60px;border-radius:50%;
-  background:rgba(0,212,200,0.1);border:1px solid rgba(0,212,200,0.4);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.6rem;margin:0 auto 1.2rem;
-}
+.success-icon{width:60px;height:60px;border-radius:50%;background:rgba(0,212,200,0.1);border:1px solid rgba(0,212,200,0.4);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 1.2rem}
 .ns-list{margin-top:1.5rem;border-top:1px solid rgba(0,212,200,0.15)}
 .ns{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(0,212,200,0.1);text-align:left}
 .ns-icon{font-size:1.1rem;min-width:26px}
@@ -212,11 +75,8 @@ nav{
 .ns-desc{font-size:0.75rem;color:rgba(240,238,234,0.45);line-height:1.6}
 .cpills{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid rgba(0,212,200,0.15)}
 .cpill{font-size:0.72rem;border:1px solid rgba(0,212,200,0.25);padding:0.5rem 0.9rem;color:#00d4c8;text-decoration:none}
-
 .count-row{font-size:0.72rem;color:rgba(240,238,234,0.35);margin-top:1.2rem;letter-spacing:0.06em}
 .count-row b{color:#e2b96a}
-
-/* HELP */
 .help{padding:4rem 2rem;background:#070b18;border-top:1px solid rgba(0,212,200,0.15);text-align:center}
 .help-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,212,200,0.1);max-width:600px;margin:2rem auto 0}
 .help-card{background:#070b18;padding:2rem 1.5rem;text-decoration:none;display:block}
@@ -225,40 +85,25 @@ nav{
 .help-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#00d4c8;margin-bottom:0.4rem}
 .help-val{font-size:0.9rem;font-weight:bold;color:#f0eeea;margin-bottom:0.3rem}
 .help-note{font-size:0.68rem;color:rgba(240,238,234,0.3)}
-
-/* FOOTER */
-footer{
-  padding:1.5rem 2rem;background:#050810;
-  border-top:1px solid rgba(0,212,200,0.1);
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.8rem;
-}
+footer{padding:1.5rem 2rem;background:#050810;border-top:1px solid rgba(0,212,200,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.8rem}
 footer p{font-size:0.65rem;color:rgba(240,238,234,0.2)}
 footer a{font-size:0.65rem;color:rgba(240,238,234,0.25);text-decoration:none}
-footer a:hover{color:#00d4c8}
-
-@media(max-width:600px){
-  .stats{flex-direction:column;gap:1rem}
-  .help-cards{grid-template-columns:1fr}
-  .email-row{flex-direction:column}
-  .send-btn{padding:0.9rem}
-  .otp-d{width:44px;height:54px;font-size:1.3rem}
-}
+@media(max-width:600px){.stats{flex-direction:column;gap:1rem}.help-cards{grid-template-columns:1fr}.email-row{flex-direction:column}.otp-d{width:44px;height:54px;font-size:1.3rem}}
 </style>
 </head>
 <body>
 
 <nav>
   <a class="logo" href="#">Axova</a>
-  <button class="nav-btn" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Join Waitlist</button>
+  <button class="nav-btn" id="navJoinBtn">Join Waitlist</button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="badge">&#9679; Early Access Open — Limited Spots</div>
+  <div class="badge">&#9679; Early Access Open</div>
   <h1>Your business,<br/><span>automated</span><br/>effortlessly.</h1>
-  <p>Axova deploys AI agents that run your workflows 24/7 — so your team stops wasting time on tasks that should just happen automatically.</p>
-  <button class="hero-btn" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Get Early Access &rarr;</button>
-  <span class="hero-note">Free tier available &middot; No credit card required</span>
+  <p>Axova deploys AI agents that run your workflows 24/7 so your team stops wasting time on tasks that should just happen automatically.</p>
+  <button class="hero-btn" id="heroJoinBtn">Get Early Access</button>
+  <span class="hero-note">Free tier available - No credit card required</span>
   <div class="stats">
     <div class="stat"><div class="stat-n">10<b>x</b></div><div class="stat-l">Faster than manual</div></div>
     <div class="stat"><div class="stat-n">98<b>%</b></div><div class="stat-l">Task accuracy</div></div>
@@ -267,7 +112,6 @@ footer a:hover{color:#00d4c8}
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
     <span>AI Agents</span><span>Workflow Automation</span><span>Document Intelligence</span><span>CRM Sync</span><span>Email Automation</span><span>Smart Scheduling</span><span>Data Pipelines</span><span>Lead Qualification</span><span>Invoice Processing</span>
@@ -275,25 +119,23 @@ footer a:hover{color:#00d4c8}
   </div>
 </div>
 
-<!-- FEATURES -->
 <section class="features" id="features">
   <div class="section-tag">// What Axova does</div>
-  <h2 class="section-title">Built for the work<br/>that never <span>stops</span></h2>
+  <h2 class="section-title">Built for work<br/>that never <span>stops</span></h2>
   <div class="cards">
-    <div class="card"><div class="card-num">01</div><div class="card-icon">&#9889;</div><div class="card-title">Intelligent Agents</div><p class="card-desc">Autonomous AI agents handle complex multi-step tasks from lead qualification to invoice processing without supervision.</p></div>
-    <div class="card"><div class="card-num">02</div><div class="card-icon">&#128279;</div><div class="card-title">Deep Integrations</div><p class="card-desc">Connect Slack, Notion, Salesforce, HubSpot, Gmail and 200+ more apps with our zero-code flow builder.</p></div>
-    <div class="card"><div class="card-num">03</div><div class="card-icon">&#129504;</div><div class="card-title">Decision Intelligence</div><p class="card-desc">AI reads your data and makes smart routing decisions in milliseconds. Logic that learns and adapts over time.</p></div>
-    <div class="card"><div class="card-num">04</div><div class="card-icon">&#128196;</div><div class="card-title">Document Extraction</div><p class="card-desc">Parse contracts, receipts, emails and reports automatically. Turn documents into structured, actionable data.</p></div>
-    <div class="card"><div class="card-num">05</div><div class="card-icon">&#128202;</div><div class="card-title">Live Dashboards</div><p class="card-desc">Monitor every automation in real time. Spot bottlenecks, measure ROI and audit every agent decision.</p></div>
-    <div class="card"><div class="card-num">06</div><div class="card-icon">&#128274;</div><div class="card-title">Enterprise Security</div><p class="card-desc">SOC 2 compliant. Role-based access, encrypted pipelines and on-premise deployment for regulated industries.</p></div>
+    <div class="card"><div class="card-num">01</div><div class="card-icon">&#9889;</div><div class="card-title">Intelligent Agents</div><p class="card-desc">Autonomous AI agents handle complex tasks from lead qualification to invoice processing without supervision.</p></div>
+    <div class="card"><div class="card-num">02</div><div class="card-icon">&#128279;</div><div class="card-title">Deep Integrations</div><p class="card-desc">Connect Slack, Notion, Salesforce, HubSpot, Gmail and 200+ apps with zero-code flow builders.</p></div>
+    <div class="card"><div class="card-num">03</div><div class="card-icon">&#129504;</div><div class="card-title">Decision Intelligence</div><p class="card-desc">AI reads your data and makes smart routing decisions in milliseconds. Logic that learns and adapts.</p></div>
+    <div class="card"><div class="card-num">04</div><div class="card-icon">&#128196;</div><div class="card-title">Document Extraction</div><p class="card-desc">Parse contracts, receipts and reports automatically. Turn documents into structured actionable data.</p></div>
+    <div class="card"><div class="card-num">05</div><div class="card-icon">&#128202;</div><div class="card-title">Live Dashboards</div><p class="card-desc">Monitor every automation in real time. Spot bottlenecks and measure ROI on every agent decision.</p></div>
+    <div class="card"><div class="card-num">06</div><div class="card-icon">&#128274;</div><div class="card-title">Enterprise Security</div><p class="card-desc">SOC 2 compliant. Role-based access, encrypted pipelines and on-premise deployment options.</p></div>
   </div>
 </section>
 
-<!-- WAITLIST -->
 <section class="waitlist" id="waitlist">
   <div class="section-tag">// Early access</div>
   <h2 class="section-title">Be first.<br/>Automate <span>everything</span>.</h2>
-  <p style="font-size:0.9rem;color:rgba(240,238,234,0.5);max-width:400px;margin:0 auto;line-height:1.8">Join the waitlist and get 3 months free when we launch. A verification code will be sent to your inbox instantly.</p>
+  <p style="font-size:0.9rem;color:rgba(240,238,234,0.5);max-width:400px;margin:0 auto;line-height:1.8">Join the waitlist and get 3 months free. A 6-digit verification code will be sent to your inbox instantly.</p>
 
   <div class="wl-card">
     <div class="progress">
@@ -302,20 +144,18 @@ footer a:hover{color:#00d4c8}
       <div class="pd" id="p3"></div>
     </div>
 
-    <!-- STEP 1 -->
     <div class="step show" id="s1">
       <div class="step-label">Step 1 of 2</div>
       <div class="step-title">Enter your email</div>
-      <div class="step-sub">We will send a 6-digit code to verify your spot on the waitlist.</div>
+      <div class="step-sub">We will send a 6-digit code to verify your spot.</div>
       <div class="email-row">
         <input class="email-in" id="emailIn" type="email" placeholder="you@company.com"/>
-        <button class="send-btn" id="sendBtn" onclick="sendCode()">Send Code</button>
+        <button class="send-btn" id="sendBtn">Send Code</button>
       </div>
       <div class="msg" id="m1"></div>
       <div class="count-row">Join <b id="countNum">847</b> others already waiting</div>
     </div>
 
-    <!-- STEP 2 -->
     <div class="step" id="s2">
       <div class="step-label">Step 2 of 2</div>
       <div class="step-title">Check your inbox</div>
@@ -329,114 +169,167 @@ footer a:hover{color:#00d4c8}
         <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d5"/>
       </div>
       <div class="msg" id="m2"></div>
-      <button class="verify-btn" id="verifyBtn" onclick="verifyCode()">Verify and Join</button>
-      <button class="resend-btn" id="resendBtn" onclick="resendCode()" disabled>Resend code</button>
+      <button class="verify-btn" id="verifyBtn">Verify and Join</button>
+      <button class="resend-btn" id="resendBtn" disabled>Resend code</button>
       <div class="countdown" id="cd">Resend in <span id="timer">60</span>s</div>
     </div>
 
-    <!-- STEP 3 SUCCESS -->
     <div class="step" id="s3">
       <div class="success-icon">&#9989;</div>
       <div class="step-title" style="text-align:center">You are in!</div>
       <div class="step-sub" style="text-align:center">Spot <strong id="spotNum">#848</strong> confirmed. Welcome to Axova!</div>
       <div class="ns-list">
-        <div class="ns"><div class="ns-icon">&#128236;</div><div><div class="ns-title">Welcome email sent</div><div class="ns-desc">Check your inbox for confirmation and early access details.</div></div></div>
-        <div class="ns"><div class="ns-icon">&#128640;</div><div><div class="ns-title">Early access, 2 weeks ahead</div><div class="ns-desc">You get in before the public with 3 months free on any plan.</div></div></div>
+        <div class="ns"><div class="ns-icon">&#128236;</div><div><div class="ns-title">Welcome email sent</div><div class="ns-desc">Check your inbox for your confirmation and early access details.</div></div></div>
+        <div class="ns"><div class="ns-icon">&#128640;</div><div><div class="ns-title">Early access 2 weeks ahead</div><div class="ns-desc">You get in before the public with 3 months free on any plan.</div></div></div>
         <div class="ns"><div class="ns-icon">&#129309;</div><div><div class="ns-title">Personal onboarding call</div><div class="ns-desc">We will build your first automation together on a live call.</div></div></div>
       </div>
       <div class="cpills">
         <a href="tel:+254757358744" class="cpill">&#128222; +254 757 358 744</a>
-        <a href="/cdn-cgi/l/email-protection#c5aaa7aca9aaa8aab6a0b6f4fcf485a2a8a4aca9eba6aaa8" class="cpill">&#9993; <span class="__cf_email__" data-cfemail="c9a6aba0a5a6a4a6baacbaf8f0f889aea4a8a0a5e7aaa6a4">[email&#160;protected]</span></a>
+        <a href="mailto:obilomoses191@gmail.com" class="cpill">&#9993; obilomoses191@gmail.com</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HELP -->
 <section class="help">
   <div class="section-tag">// Support</div>
   <h2 class="section-title">Talk to a <span>real person</span></h2>
   <div class="help-cards">
-    <a href="tel:+254757358744" class="help-card">
-      <div class="help-icon">&#128222;</div>
-      <div class="help-label">Call us</div>
-      <div class="help-val">+254 757 358 744</div>
-      <div class="help-note">Mon-Fri 9am-6pm EAT</div>
-    </a>
-    <a href="/cdn-cgi/l/email-protection#8fe0ede6e3e0e2e0fceafcbeb6becfe8e2eee6e3a1ece0e2" class="help-card">
-      <div class="help-icon">&#9993;</div>
-      <div class="help-label">Email us</div>
-      <div class="help-val"><span class="__cf_email__" data-cfemail="f8979a91949795978b9d8bc9c1c9b89f95999194d69b9795">[email&#160;protected]</span></div>
-      <div class="help-note">Reply within 24 hours</div>
-    </a>
+    <a href="tel:+254757358744" class="help-card"><div class="help-icon">&#128222;</div><div class="help-label">Call us</div><div class="help-val">+254 757 358 744</div><div class="help-note">Mon-Fri 9am-6pm EAT</div></a>
+    <a href="mailto:obilomoses191@gmail.com" class="help-card"><div class="help-icon">&#9993;</div><div class="help-label">Email us</div><div class="help-val">obilomoses191@gmail.com</div><div class="help-note">Reply within 24 hours</div></a>
   </div>
 </section>
 
 <footer>
-  <p>&copy; 2025 AXOVA TECHNOLOGIES INC.</p>
+  <p>2025 AXOVA TECHNOLOGIES INC.</p>
   <div style="display:flex;gap:1.2rem">
     <a href="tel:+254757358744">+254 757 358 744</a>
-    <a href="/cdn-cgi/l/email-protection#bad5d8d3d6d5d7d5c9dfc98b838bfaddd7dbd3d694d9d5d7"><span class="__cf_email__" data-cfemail="bad5d8d3d6d5d7d5c9dfc98b838bfaddd7dbd3d694d9d5d7">[email&#160;protected]</span></a>
+    <a href="mailto:obilomoses191@gmail.com">obilomoses191@gmail.com</a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-var currentEmail='', codeVal='', resendTimer=null, count=847;
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+window.addEventListener('load', function() {
 
-function showStep(n){
-  document.querySelectorAll('.step').forEach(function(s,i){
-    s.classList.toggle('show', i===n-1);
-  });
-  ['p1','p2','p3'].forEach(function(id,i){
-    var d=document.getElementById(id);
-    d.className='pd';
-    if(i<n-1) d.className='pd done';
-    else if(i===n-1) d.className='pd active';
-  });
-}
+  var EJS_PUB  = 'BETBwCkk8rde3odvp';
+  var EJS_SVC  = 'service_es4iiiz';
+  var EJS_TPL  = 'template_5hkbkgm';
+  var FSP_URL  = 'https://formspree.io/f/xzdkwvoz';
+  emailjs.init({ publicKey: EJS_PUB });
 
-function showMsg(id,type,text){
-  var el=document.getElementById(id);
-  el.className='msg '+type+' show';
-  el.innerHTML=text;
-}
-function hideMsg(id){document.getElementById(id).className='msg'}
+  var currentEmail = '';
+  var codeVal = '';
+  var resendTimer = null;
+  var count = 847;
 
-async function sendCode(){
-  var email=document.getElementById('emailIn').value.trim();
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    showMsg('m1','err','Please enter a valid email address.');return;
+  function scrollToWaitlist() {
+    document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
   }
-  currentEmail=email;
-  codeVal=String(Math.floor(100000+Math.random()*900000));
-  count++;
-  var btn=document.getElementById('sendBtn');
-  btn.textContent='Sending...';btn.disabled=true;
-  hideMsg('m1');
-  try{
-    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+
+  document.getElementById('navJoinBtn').addEventListener('click', scrollToWaitlist);
+  document.getElementById('heroJoinBtn').addEventListener('click', scrollToWaitlist);
+
+  function showStep(n) {
+    document.querySelectorAll('.step').forEach(function(s, i) {
+      s.classList.toggle('show', i === n - 1);
+    });
+    ['p1','p2','p3'].forEach(function(id, i) {
+      var d = document.getElementById(id);
+      d.className = 'pd';
+      if (i < n - 1) d.className = 'pd done';
+      else if (i === n - 1) d.className = 'pd active';
+    });
+  }
+
+  function showMsg(id, type, text) {
+    var el = document.getElementById(id);
+    el.className = 'msg ' + type + ' show';
+    el.innerHTML = text;
+  }
+
+  function hideMsg(id) {
+    document.getElementById(id).className = 'msg';
+  }
+
+  function startCountdown() {
+    var rb = document.getElementById('resendBtn');
+    var tn = document.getElementById('timer');
+    var cd = document.getElementById('cd');
+    rb.disabled = true;
+    cd.style.display = 'block';
+    var t = 60;
+    tn.textContent = t;
+    clearInterval(resendTimer);
+    resendTimer = setInterval(function() {
+      t--;
+      tn.textContent = t;
+      if (t <= 0) {
+        clearInterval(resendTimer);
+        rb.disabled = false;
+        cd.style.display = 'none';
+      }
+    }, 1000);
+  }
+
+  // SEND CODE
+  document.getElementById('sendBtn').addEventListener('click', function() {
+    var email = document.getElementById('emailIn').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showMsg('m1', 'err', 'Please enter a valid email address.');
+      return;
+    }
+    currentEmail = email;
+    codeVal = String(Math.floor(100000 + Math.random() * 900000));
+    count++;
+    var btn = document.getElementById('sendBtn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    hideMsg('m1');
+    emailjs.send(EJS_SVC, EJS_TPL, {
       to_email: email,
       code: codeVal,
       spot: count
+    }).then(function() {
+      document.getElementById('sentTo').textContent = email;
+      document.getElementById('spotNum').textContent = '#' + count;
+      document.getElementById('countNum').textContent = count;
+      showStep(2);
+      document.getElementById('d0').focus();
+      startCountdown();
+    }).catch(function(err) {
+      btn.textContent = 'Send Code';
+      btn.disabled = false;
+      showMsg('m1', 'err', 'Could not send email. Please check your connection and try again. Error: ' + JSON.stringify(err));
     });
-    document.getElementById('sentTo').textContent=email;
-    document.getElementById('spotNum').textContent='#'+count;
-    document.getElementById('countNum').textContent=count;
-    showStep(2);
-    document.getElementById('d0').focus();
-    startCountdown();
-  } catch(e){
-    btn.textContent='Send Code';btn.disabled=false;
-    showMsg('m1','err','Could not send email. Please try again or email us directly at obilomoses191@gmail.com');
-  }
-}
-
-// OTP inputs
-document.querySelectorAll('.otp-d').forEach(function(inp,i,all){
-  inp.addEventListener('input',function(){
-    inp.value=inp.value.replace(/\D/,'');
-    if(inp.value&&i<5)all[i+1].focus();
   });
-  inp.addEventListener('keydown',function(e){
-    if(e.key==='Backspace'&&!inp.value&&i>0)all[i-1].focus();
+
+  // ENTER KEY on email
+  document.getElementById('emailIn').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') document.getElementById('sendBtn').click();
+  });
+
+  // OTP INPUTS
+  var otpInputs = document.querySelectorAll('.otp-d');
+  otpInputs.forEach(function(inp, i) {
+    inp.addEventListener('input', function() {
+      inp.value = inp.value.replace(/\D/, '');
+      if (inp.value && i < 5) otpInputs[i + 1].focus();
+    });
+    inp.addEventListener('keydown', function(e) {
+      if (e.key === 'Backspace' && !inp.value && i > 0) otpInputs[i - 1].focus();
+    });
+    inp.addEventListener('paste', function(e) {
+      e.preventDefault();
+      var t = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '').slice(0, 6);
+      t.split('').forEach(function(ch, j) { if (otpInputs[j]) otpInputs[j].value = ch; });
+      if (t.length > 0) otpInputs[Math.min(t.length, 5)].focus();
+    });
+  });
+
+  function getOTP() {
+    return Array.from(otpInputs).map(function(d) { return d.value; }).join('');
   }
+
+  // VERIFY CODE
+  document.getElementById('verifyBtn').add
