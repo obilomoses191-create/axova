@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Axova - AI Automation Platform</title>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#050810;color:#f0eeea;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.6}
@@ -15,7 +16,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,8,16,0.97);border-bottom
 .hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:900;line-height:1.05;color:#f0eeea;margin-bottom:1.5rem}
 .hero h1 span{color:#00d4c8}
 .hero p{font-size:1.1rem;color:rgba(240,238,234,0.6);max-width:500px;margin:0 auto 2.5rem;line-height:1.8}
-.hero-btn{display:inline-block;background:linear-gradient(135deg,#00d4c8,#e2b96a);color:#050810;padding:1rem 2.5rem;font-size:1rem;font-weight:bold;border:none;cursor:pointer;text-decoration:none}
+.hero-btn{display:inline-block;background:linear-gradient(135deg,#00d4c8,#e2b96a);color:#050810;padding:1rem 2.5rem;font-size:1rem;font-weight:bold;border:none;cursor:pointer}
 .hero-note{display:block;font-size:0.8rem;color:rgba(240,238,234,0.35);margin-top:1rem}
 .stats{display:flex;justify-content:center;flex-wrap:wrap;border-top:1px solid rgba(0,212,200,0.15);margin-top:4rem;padding-top:3rem}
 .stat{padding:1rem 2.5rem;text-align:center}
@@ -49,24 +50,20 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,8,16,0.97);border-bottom
 .step-title{font-size:1.5rem;font-weight:900;color:#f0eeea;margin-bottom:0.5rem}
 .step-sub{font-size:0.82rem;color:rgba(240,238,234,0.5);margin-bottom:1.8rem;line-height:1.7}
 .step-sub strong{color:#e2b96a}
-.email-row{display:flex;border:1px solid rgba(0,212,200,0.3)}
-.email-row:focus-within{border-color:#00d4c8}
-.email-in{flex:1;background:transparent;border:none;outline:none;color:#f0eeea;font-size:0.9rem;padding:0.9rem 1rem}
+.email-wrap{border:1px solid rgba(0,212,200,0.3);margin-bottom:0.5rem}
+.email-wrap:focus-within{border-color:#00d4c8}
+.email-in{width:100%;background:transparent;border:none;outline:none;color:#f0eeea;font-size:0.9rem;padding:0.9rem 1rem}
 .email-in::placeholder{color:rgba(240,238,234,0.25)}
-.send-btn{background:linear-gradient(135deg,#00d4c8,#e2b96a);color:#050810;border:none;font-size:0.7rem;font-weight:bold;letter-spacing:0.08em;padding:0.9rem 1.2rem;cursor:pointer;white-space:nowrap}
-.send-btn:disabled{opacity:0.5}
+.send-btn{width:100%;background:linear-gradient(135deg,#00d4c8,#e2b96a);color:#050810;border:none;font-size:0.85rem;font-weight:bold;padding:0.9rem;cursor:pointer}
 .otp-row{display:flex;gap:0.5rem;justify-content:center;margin:1.5rem 0}
 .otp-d{width:50px;height:60px;background:rgba(255,255,255,0.04);border:1px solid rgba(0,212,200,0.2);color:#f0eeea;font-size:1.5rem;font-weight:bold;text-align:center;outline:none}
 .otp-d:focus{border-color:#00d4c8}
-.verify-btn{width:100%;background:linear-gradient(135deg,#00d4c8,#e2b96a);color:#050810;border:none;font-size:0.82rem;font-weight:bold;padding:1rem;cursor:pointer;margin-bottom:0.8rem}
-.verify-btn:disabled{opacity:0.5}
+.verify-btn{width:100%;background:linear-gradient(135deg,#00d4c8,#e2b96a);color:#050810;border:none;font-size:0.85rem;font-weight:bold;padding:1rem;cursor:pointer;margin-bottom:0.8rem}
 .resend-btn{width:100%;background:transparent;border:1px solid rgba(0,212,200,0.2);color:rgba(240,238,234,0.4);font-size:0.75rem;padding:0.7rem;cursor:pointer}
-.resend-btn:disabled{opacity:0.4}
-.countdown{font-size:0.7rem;color:rgba(240,238,234,0.35);text-align:center;margin-top:0.6rem}
-.msg{display:none;font-size:0.78rem;padding:0.8rem 1rem;margin-top:0.8rem;text-align:left;line-height:1.6}
-.msg.err{background:rgba(255,87,87,0.08);border-left:2px solid #ff5757;color:#ff9999}
-.msg.ok{background:rgba(0,212,200,0.06);border-left:2px solid #00d4c8;color:rgba(240,238,234,0.7)}
-.msg.show{display:block}
+.countdown{font-size:0.7rem;color:rgba(240,238,234,0.35);text-align:center;margin-top:0.6rem;display:none}
+.msg{font-size:0.78rem;padding:0.8rem 1rem;margin-top:0.8rem;text-align:left;line-height:1.6;display:none}
+.msg.err{background:rgba(255,87,87,0.08);border-left:2px solid #ff5757;color:#ff9999;display:block}
+.msg.ok{background:rgba(0,212,200,0.06);border-left:2px solid #00d4c8;color:rgba(240,238,234,0.7);display:block}
 .success-icon{width:60px;height:60px;border-radius:50%;background:rgba(0,212,200,0.1);border:1px solid rgba(0,212,200,0.4);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 1.2rem}
 .ns-list{margin-top:1.5rem;border-top:1px solid rgba(0,212,200,0.15)}
 .ns{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(0,212,200,0.1);text-align:left}
@@ -75,12 +72,11 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,8,16,0.97);border-bottom
 .ns-desc{font-size:0.75rem;color:rgba(240,238,234,0.45);line-height:1.6}
 .cpills{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid rgba(0,212,200,0.15)}
 .cpill{font-size:0.72rem;border:1px solid rgba(0,212,200,0.25);padding:0.5rem 0.9rem;color:#00d4c8;text-decoration:none}
-.count-row{font-size:0.72rem;color:rgba(240,238,234,0.35);margin-top:1.2rem;letter-spacing:0.06em}
+.count-row{font-size:0.72rem;color:rgba(240,238,234,0.35);margin-top:1.2rem}
 .count-row b{color:#e2b96a}
 .help{padding:4rem 2rem;background:#070b18;border-top:1px solid rgba(0,212,200,0.15);text-align:center}
 .help-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,212,200,0.1);max-width:600px;margin:2rem auto 0}
 .help-card{background:#070b18;padding:2rem 1.5rem;text-decoration:none;display:block}
-.help-card:hover{background:rgba(0,212,200,0.04)}
 .help-icon{font-size:1.6rem;margin-bottom:0.8rem}
 .help-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#00d4c8;margin-bottom:0.4rem}
 .help-val{font-size:0.9rem;font-weight:bold;color:#f0eeea;margin-bottom:0.3rem}
@@ -88,21 +84,21 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,8,16,0.97);border-bottom
 footer{padding:1.5rem 2rem;background:#050810;border-top:1px solid rgba(0,212,200,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.8rem}
 footer p{font-size:0.65rem;color:rgba(240,238,234,0.2)}
 footer a{font-size:0.65rem;color:rgba(240,238,234,0.25);text-decoration:none}
-@media(max-width:600px){.stats{flex-direction:column;gap:1rem}.help-cards{grid-template-columns:1fr}.email-row{flex-direction:column}.otp-d{width:44px;height:54px;font-size:1.3rem}}
+@media(max-width:600px){.stats{flex-direction:column;gap:1rem}.help-cards{grid-template-columns:1fr}.otp-d{width:44px;height:54px;font-size:1.3rem}}
 </style>
 </head>
 <body>
 
 <nav>
   <a class="logo" href="#">Axova</a>
-  <button class="nav-btn" id="navJoinBtn">Join Waitlist</button>
+  <button class="nav-btn" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Join Waitlist</button>
 </nav>
 
 <section class="hero">
-  <div class="badge">&#9679; Early Access Open</div>
+  <div class="badge">Early Access Open</div>
   <h1>Your business,<br/><span>automated</span><br/>effortlessly.</h1>
   <p>Axova deploys AI agents that run your workflows 24/7 so your team stops wasting time on tasks that should just happen automatically.</p>
-  <button class="hero-btn" id="heroJoinBtn">Get Early Access</button>
+  <button class="hero-btn" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Get Early Access</button>
   <span class="hero-note">Free tier available - No credit card required</span>
   <div class="stats">
     <div class="stat"><div class="stat-n">10<b>x</b></div><div class="stat-l">Faster than manual</div></div>
@@ -120,7 +116,7 @@ footer a{font-size:0.65rem;color:rgba(240,238,234,0.25);text-decoration:none}
 </div>
 
 <section class="features" id="features">
-  <div class="section-tag">// What Axova does</div>
+  <div class="section-tag">What Axova does</div>
   <h2 class="section-title">Built for work<br/>that never <span>stops</span></h2>
   <div class="cards">
     <div class="card"><div class="card-num">01</div><div class="card-icon">&#9889;</div><div class="card-title">Intelligent Agents</div><p class="card-desc">Autonomous AI agents handle complex tasks from lead qualification to invoice processing without supervision.</p></div>
@@ -133,7 +129,7 @@ footer a{font-size:0.65rem;color:rgba(240,238,234,0.25);text-decoration:none}
 </section>
 
 <section class="waitlist" id="waitlist">
-  <div class="section-tag">// Early access</div>
+  <div class="section-tag">Early access</div>
   <h2 class="section-title">Be first.<br/>Automate <span>everything</span>.</h2>
   <p style="font-size:0.9rem;color:rgba(240,238,234,0.5);max-width:400px;margin:0 auto;line-height:1.8">Join the waitlist and get 3 months free. A 6-digit verification code will be sent to your inbox instantly.</p>
 
@@ -148,11 +144,11 @@ footer a{font-size:0.65rem;color:rgba(240,238,234,0.25);text-decoration:none}
       <div class="step-label">Step 1 of 2</div>
       <div class="step-title">Enter your email</div>
       <div class="step-sub">We will send a 6-digit code to verify your spot.</div>
-      <div class="email-row">
+      <div class="email-wrap">
         <input class="email-in" id="emailIn" type="email" placeholder="you@company.com"/>
-        <button class="send-btn" id="sendBtn">Send Code</button>
       </div>
-      <div class="msg" id="m1"></div>
+      <button class="send-btn" id="sendBtn" onclick="axovaSend()">Send Code</button>
+      <div id="m1" class="msg"></div>
       <div class="count-row">Join <b id="countNum">847</b> others already waiting</div>
     </div>
 
@@ -161,16 +157,16 @@ footer a{font-size:0.65rem;color:rgba(240,238,234,0.25);text-decoration:none}
       <div class="step-title">Check your inbox</div>
       <div class="step-sub">6-digit code sent to <strong id="sentTo"></strong></div>
       <div class="otp-row">
-        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d0"/>
-        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d1"/>
-        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d2"/>
-        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d3"/>
-        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d4"/>
-        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d5"/>
+        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d0" oninput="axovaOtp(this,0)" onkeydown="axovaBack(event,0)"/>
+        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d1" oninput="axovaOtp(this,1)" onkeydown="axovaBack(event,1)"/>
+        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d2" oninput="axovaOtp(this,2)" onkeydown="axovaBack(event,2)"/>
+        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d3" oninput="axovaOtp(this,3)" onkeydown="axovaBack(event,3)"/>
+        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d4" oninput="axovaOtp(this,4)" onkeydown="axovaBack(event,4)"/>
+        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d5" oninput="axovaOtp(this,5)" onkeydown="axovaBack(event,5)"/>
       </div>
-      <div class="msg" id="m2"></div>
-      <button class="verify-btn" id="verifyBtn">Verify and Join</button>
-      <button class="resend-btn" id="resendBtn" disabled>Resend code</button>
+      <div id="m2" class="msg"></div>
+      <button class="verify-btn" onclick="axovaVerify()">Verify and Join</button>
+      <button class="resend-btn" id="resendBtn" onclick="axovaResend()" disabled>Resend code</button>
       <div class="countdown" id="cd">Resend in <span id="timer">60</span>s</div>
     </div>
 
@@ -185,151 +181,132 @@ footer a{font-size:0.65rem;color:rgba(240,238,234,0.25);text-decoration:none}
       </div>
       <div class="cpills">
         <a href="tel:+254757358744" class="cpill">&#128222; +254 757 358 744</a>
-        <a href="mailto:obilomoses191@gmail.com" class="cpill">&#9993; obilomoses191@gmail.com</a>
+        <span class="cpill" style="cursor:pointer" onclick="window.location='mai'+'lto:obilo'+'moses191@gm'+'ail.com'">&#9993; obilomoses191</span>
       </div>
     </div>
   </div>
 </section>
 
 <section class="help">
-  <div class="section-tag">// Support</div>
+  <div class="section-tag">Support</div>
   <h2 class="section-title">Talk to a <span>real person</span></h2>
   <div class="help-cards">
     <a href="tel:+254757358744" class="help-card"><div class="help-icon">&#128222;</div><div class="help-label">Call us</div><div class="help-val">+254 757 358 744</div><div class="help-note">Mon-Fri 9am-6pm EAT</div></a>
-    <a href="mailto:obilomoses191@gmail.com" class="help-card"><div class="help-icon">&#9993;</div><div class="help-label">Email us</div><div class="help-val">obilomoses191@gmail.com</div><div class="help-note">Reply within 24 hours</div></a>
+    <div class="help-card" onclick="window.location='mai'+'lto:obilo'+'moses191@gm'+'ail.com'" style="cursor:pointer"><div class="help-icon">&#9993;</div><div class="help-label">Email us</div><div class="help-val">obilomoses191</div><div class="help-note">Reply within 24 hours</div></div>
   </div>
 </section>
 
 <footer>
   <p>2025 AXOVA TECHNOLOGIES INC.</p>
-  <div style="display:flex;gap:1.2rem">
-    <a href="tel:+254757358744">+254 757 358 744</a>
-    <a href="mailto:obilomoses191@gmail.com">obilomoses191@gmail.com</a>
-  </div>
+  <a href="tel:+254757358744">+254 757 358 744</a>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-window.addEventListener('load', function() {
+var _e = 'BETBwCkk8rde3odvp';
+var _s = 'service_es4iiiz';
+var _t = 'template_5hkbkgm';
+var _f = 'https://formspree.io/f/xzdkwvoz';
+emailjs.init({publicKey: _e});
 
-  var EJS_PUB  = 'BETBwCkk8rde3odvp';
-  var EJS_SVC  = 'service_es4iiiz';
-  var EJS_TPL  = 'template_5hkbkgm';
-  var FSP_URL  = 'https://formspree.io/f/xzdkwvoz';
-  emailjs.init({ publicKey: EJS_PUB });
+var axovaEmail = '';
+var axovaCode = '';
+var axovaTimer = null;
+var axovaCount = 847;
 
-  var currentEmail = '';
-  var codeVal = '';
-  var resendTimer = null;
-  var count = 847;
+function axovaStep(n) {
+  document.getElementById('s1').className = 'step' + (n===1?' show':'');
+  document.getElementById('s2').className = 'step' + (n===2?' show':'');
+  document.getElementById('s3').className = 'step' + (n===3?' show':'');
+  document.getElementById('p1').className = 'pd' + (n===1?' active':' done');
+  document.getElementById('p2').className = 'pd' + (n===2?' active':(n>2?' done':''));
+  document.getElementById('p3').className = 'pd' + (n===3?' active':'');
+}
 
-  function scrollToWaitlist() {
-    document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
+function axovaMsg(id, type, text) {
+  var el = document.getElementById(id);
+  el.className = 'msg ' + type;
+  el.innerHTML = text;
+}
+
+function axovaSend() {
+  var email = document.getElementById('emailIn').value.trim();
+  if (!email || email.indexOf('@') < 0) {
+    axovaMsg('m1', 'err', 'Please enter a valid email address.');
+    return;
   }
+  axovaEmail = email;
+  axovaCode = String(Math.floor(100000 + Math.random() * 900000));
+  axovaCount++;
+  var btn = document.getElementById('sendBtn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  document.getElementById('m1').className = 'msg';
 
-  document.getElementById('navJoinBtn').addEventListener('click', scrollToWaitlist);
-  document.getElementById('heroJoinBtn').addEventListener('click', scrollToWaitlist);
-
-  function showStep(n) {
-    document.querySelectorAll('.step').forEach(function(s, i) {
-      s.classList.toggle('show', i === n - 1);
-    });
-    ['p1','p2','p3'].forEach(function(id, i) {
-      var d = document.getElementById(id);
-      d.className = 'pd';
-      if (i < n - 1) d.className = 'pd done';
-      else if (i === n - 1) d.className = 'pd active';
-    });
-  }
-
-  function showMsg(id, type, text) {
-    var el = document.getElementById(id);
-    el.className = 'msg ' + type + ' show';
-    el.innerHTML = text;
-  }
-
-  function hideMsg(id) {
-    document.getElementById(id).className = 'msg';
-  }
-
-  function startCountdown() {
-    var rb = document.getElementById('resendBtn');
-    var tn = document.getElementById('timer');
-    var cd = document.getElementById('cd');
-    rb.disabled = true;
-    cd.style.display = 'block';
-    var t = 60;
-    tn.textContent = t;
-    clearInterval(resendTimer);
-    resendTimer = setInterval(function() {
-      t--;
-      tn.textContent = t;
-      if (t <= 0) {
-        clearInterval(resendTimer);
-        rb.disabled = false;
-        cd.style.display = 'none';
-      }
-    }, 1000);
-  }
-
-  // SEND CODE
-  document.getElementById('sendBtn').addEventListener('click', function() {
-    var email = document.getElementById('emailIn').value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showMsg('m1', 'err', 'Please enter a valid email address.');
-      return;
-    }
-    currentEmail = email;
-    codeVal = String(Math.floor(100000 + Math.random() * 900000));
-    count++;
-    var btn = document.getElementById('sendBtn');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    hideMsg('m1');
-    emailjs.send(EJS_SVC, EJS_TPL, {
-      to_email: email,
-      code: codeVal,
-      spot: count
-    }).then(function() {
-      document.getElementById('sentTo').textContent = email;
-      document.getElementById('spotNum').textContent = '#' + count;
-      document.getElementById('countNum').textContent = count;
-      showStep(2);
-      document.getElementById('d0').focus();
-      startCountdown();
-    }).catch(function(err) {
-      btn.textContent = 'Send Code';
-      btn.disabled = false;
-      showMsg('m1', 'err', 'Could not send email. Please check your connection and try again. Error: ' + JSON.stringify(err));
-    });
+  emailjs.send(_s, _t, {
+    to_email: axovaEmail,
+    code: axovaCode,
+    spot: axovaCount
+  }).then(function() {
+    document.getElementById('sentTo').textContent = axovaEmail;
+    document.getElementById('spotNum').textContent = '#' + axovaCount;
+    document.getElementById('countNum').textContent = axovaCount;
+    axovaStep(2);
+    document.getElementById('d0').focus();
+    axovaStartTimer();
+  }, function(err) {
+    btn.textContent = 'Send Code';
+    btn.disabled = false;
+    axovaMsg('m1', 'err', 'Failed to send. Error: ' + JSON.stringify(err) + '. Please try again.');
   });
+}
 
-  // ENTER KEY on email
-  document.getElementById('emailIn').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') document.getElementById('sendBtn').click();
-  });
-
-  // OTP INPUTS
-  var otpInputs = document.querySelectorAll('.otp-d');
-  otpInputs.forEach(function(inp, i) {
-    inp.addEventListener('input', function() {
-      inp.value = inp.value.replace(/\D/, '');
-      if (inp.value && i < 5) otpInputs[i + 1].focus();
-    });
-    inp.addEventListener('keydown', function(e) {
-      if (e.key === 'Backspace' && !inp.value && i > 0) otpInputs[i - 1].focus();
-    });
-    inp.addEventListener('paste', function(e) {
-      e.preventDefault();
-      var t = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '').slice(0, 6);
-      t.split('').forEach(function(ch, j) { if (otpInputs[j]) otpInputs[j].value = ch; });
-      if (t.length > 0) otpInputs[Math.min(t.length, 5)].focus();
-    });
-  });
-
-  function getOTP() {
-    return Array.from(otpInputs).map(function(d) { return d.value; }).join('');
+function axovaOtp(inp, i) {
+  inp.value = inp.value.replace(/\D/, '');
+  if (inp.value && i < 5) {
+    document.getElementById('d' + (i+1)).focus();
   }
+}
 
-  // VERIFY CODE
-  document.getElementById('verifyBtn').add
+function axovaBack(e, i) {
+  if (e.key === 'Backspace' && !document.getElementById('d'+i).value && i > 0) {
+    document.getElementById('d'+(i-1)).focus();
+  }
+}
+
+function axovaGetCode() {
+  var code = '';
+  for (var i = 0; i < 6; i++) code += document.getElementById('d'+i).value;
+  return code;
+}
+
+function axovaVerify() {
+  var entered = axovaGetCode();
+  if (entered.length < 6) { axovaMsg('m2', 'err', 'Please enter all 6 digits.'); return; }
+  if (entered !== axovaCode) { axovaMsg('m2', 'err', 'Wrong code. Check your email and try again.'); return; }
+  clearInterval(axovaTimer);
+  fetch(_f, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: JSON.stringify({email: axovaEmail, verified: true, _subject: 'New Verified Axova Signup'})
+  }).catch(function(){}).finally ? 
+  fetch(_f, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: JSON.stringify({email: axovaEmail, verified: true, _subject: 'New Verified Axova Signup'})
+  }).catch(function(){}) : null;
+  axovaStep(3);
+}
+
+function axovaResend() {
+  axovaCode = String(Math.floor(100000 + Math.random() * 900000));
+  for (var i = 0; i < 6; i++) document.getElementById('d'+i).value = '';
+  document.getElementById('d0').focus();
+  document.getElementById('resendBtn').disabled = true;
+  document.getElementById('m2').className = 'msg';
+  emailjs.send(_s, _t, {to_email: axovaEmail, code: axovaCode, spot: axovaCount})
+    .then(function() { axovaMsg('m2', 'ok', 'New code sent!'); })
+    .catch(function() { axovaMsg('m2', 'err', 'Failed to resend. Try again.'); });
+  axovaStartTimer();
+}
+
+function axovaStartTim
