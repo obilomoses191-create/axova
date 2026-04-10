@@ -4,223 +4,454 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Axova - AI Automation Platform</title>
-<meta name="description" content="Axova automates your business workflows with AI agents. Join the waitlist."/>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 const EMAILJS_PUBLIC_KEY  = 'BETBwCkk8rde3odvp';
 const EMAILJS_SERVICE_ID  = 'service_es4iiiz';
 const EMAILJS_TEMPLATE_ID = 'zp248uq';
 const FORMSPREE_URL       = 'https://formspree.io/f/xzdkwvoz';
-const CONFIGURED = true;
 emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --void:#03040a;--deep:#070b18;--rim:rgba(255,255,255,.09);
-  --gold:#e2b96a;--teal:#00d4c8;--teal2:#4ffff5;
-  --white:#f0eeea;--muted:rgba(240,238,234,.4);--danger:#ff5757;
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#050810;
+  color:#f0eeea;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:16px;
+  line-height:1.6;
 }
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-[style*='animation'],[class*='hero']{opacity:1}
-body{background:var(--void);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
-#cur{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--teal);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen}
-#cur-ring{position:fixed;width:40px;height:40px;border-radius:50%;border:1px solid rgba(0,212,200,.35);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s}
-#starfield{position:fixed;inset:0;z-index:0;pointer-events:none}
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 4rem;border-bottom:1px solid transparent;transition:all .5s}
-nav.stuck{background:rgba(3,4,10,.85);backdrop-filter:blur(20px);border-color:var(--rim)}
-.nav-logo{font-family:'Instrument Serif',serif;font-size:1.5rem;font-style:italic;background:linear-gradient(135deg,var(--gold),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
-.nav-btn{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;border:1px solid rgba(0,212,200,.3);color:var(--teal);background:rgba(0,212,200,.06);padding:.6rem 1.4rem;cursor:none;transition:all .2s}
-.nav-btn:hover{background:rgba(0,212,200,.15);box-shadow:0 0 20px rgba(0,212,200,.2)}
-.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 4rem;overflow:hidden}
-.hero-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse,rgba(0,212,200,.08) 0%,transparent 65%);pointer-events:none}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:.8rem;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.18em;color:var(--teal);border:1px solid rgba(0,212,200,.2);padding:.45rem 1rem;width:fit-content;margin-bottom:2.5rem;background:rgba(0,212,200,.04);animation:rise .8s ease forwards}
-.hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--teal);border-radius:50%;animation:ping 2s infinite}
-@keyframes ping{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.4}}
-@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-h1{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(3.8rem,8.5vw,9rem);line-height:.92;letter-spacing:-.04em;max-width:1000px;opacity:0;animation:rise .9s .2s ease forwards}
-.line2{display:block;font-style:italic;background:linear-gradient(90deg,var(--gold),var(--teal2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.line3{display:block;color:var(--muted)}
-.hero-sub{font-size:1rem;color:var(--muted);line-height:1.85;max-width:460px;margin-top:2.5rem;animation:rise .9s .35s ease forwards}
-.hero-actions{display:flex;align-items:center;gap:2.5rem;margin-top:3rem;animation:rise .9s .5s ease forwards}
-.btn-hero{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.1em;background:linear-gradient(135deg,var(--teal),var(--gold));color:var(--void);border:none;padding:1rem 2.4rem;cursor:none;font-weight:700;transition:transform .2s,box-shadow .2s}
-.btn-hero:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,212,200,.3)}
-.hero-hint{font-size:.7rem;color:var(--muted);letter-spacing:.06em}
-.hero-stats{display:flex;gap:3rem;margin-top:4.5rem;padding-top:3rem;border-top:1px solid var(--rim);animation:rise .9s .65s ease forwards}
-.stat-num{font-family:'Instrument Serif',serif;font-size:2.8rem;font-style:italic;color:var(--white)}
-.stat-num span{color:var(--teal)}
-.stat-label{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
-.ticker{position:relative;z-index:1;padding:1rem 0;border-top:1px solid var(--rim);border-bottom:1px solid var(--rim);overflow:hidden;background:rgba(0,212,200,.02)}
-.ticker-track{display:inline-block;white-space:nowrap;animation:scroll 35s linear infinite;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(0,212,200,.4)}
-.ticker-track span{margin:0 2.5rem}
-@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.section{position:relative;z-index:1;padding:8rem 4rem}
-.section-tag{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1.2rem}
-.section-title{font-family:'Instrument Serif',serif;font-size:clamp(2.4rem,4.5vw,4rem);font-weight:400;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem}
-.section-title em{font-style:italic;background:linear-gradient(90deg,var(--gold),var(--teal2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rim);margin-top:4rem}
-.bento-card{background:var(--deep);padding:2.8rem;position:relative;overflow:hidden;opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s,background .3s}
-.bento-card.visible{opacity:1;transform:none}
-.bento-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--teal),transparent);opacity:0;transition:opacity .3s}
-.bento-card:hover{background:rgba(0,212,200,.04)}
-.bento-card:hover::before{opacity:1}
-.bento-num{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.15em;color:rgba(0,212,200,.35);margin-bottom:2rem}
-.bento-icon{width:44px;height:44px;border:1px solid var(--rim);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.5rem;background:rgba(255,255,255,.03)}
-.bento-title{font-size:1rem;font-weight:500;margin-bottom:.7rem}
-.bento-desc{font-size:.82rem;color:var(--muted);line-height:1.85}
-.how-wrap{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;margin-top:4rem}
-.how-step{display:flex;gap:2rem;padding:2.2rem 0;border-bottom:1px solid var(--rim);opacity:0;transform:translateX(-20px);transition:opacity .6s,transform .6s}
-.how-step:first-child{border-top:1px solid var(--rim)}
-.how-step.visible{opacity:1;transform:none}
-.step-n{font-family:'Instrument Serif',serif;font-size:3rem;font-style:italic;color:var(--rim);line-height:1;min-width:50px;transition:color .3s}
-.how-step:hover .step-n{color:var(--teal)}
-.step-content h3{font-size:.95rem;font-weight:500;margin-bottom:.5rem}
-.step-content p{font-size:.8rem;color:var(--muted);line-height:1.8}
-.terminal{background:var(--deep);border:1px solid var(--rim);overflow:hidden;opacity:0;transform:translateY(20px);transition:opacity .7s .2s,transform .7s .2s;position:sticky;top:100px}
-.terminal.visible{opacity:1;transform:none}
-.term-bar{background:rgba(255,255,255,.04);padding:.7rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--rim)}
-.term-dot{width:10px;height:10px;border-radius:50%}
-.term-body{padding:1.5rem;color:rgba(240,238,234,.55);line-height:2;font-family:'Space Mono',monospace;font-size:.72rem}
-.t-key{color:var(--teal)}.t-val{color:var(--white)}.t-dim{color:rgba(240,238,234,.3)}.t-ok{color:#4dff9b}
-.t-bar{height:3px;background:var(--rim);margin:.3rem 0 1rem;overflow:hidden}
-.t-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--gold));animation:tfill 2.5s ease infinite alternate}
-@keyframes tfill{from{width:35%}to{width:95%}}
-.t-blink{animation:tblink 1s step-end infinite}
-@keyframes tblink{0%,100%{opacity:1}50%{opacity:0}}
-.wl-section{position:relative;z-index:1;padding:10rem 4rem;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,212,200,.05),transparent 70%);border-top:1px solid var(--rim);text-align:center}
-.wl-section h2{max-width:none;margin-bottom:1rem}
-.wl-lead{font-size:.9rem;color:var(--muted);max-width:440px;margin:0 auto;line-height:1.9}
-.wl-card{max-width:520px;margin:3rem auto 0;background:rgba(255,255,255,.03);border:1px solid var(--rim);backdrop-filter:blur(20px);padding:3rem;position:relative;overflow:hidden}
-.wl-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--teal),var(--gold),transparent)}
-.progress{display:flex;gap:6px;margin-bottom:2.5rem}
-.prog-dot{height:3px;flex:1;background:var(--rim);transition:background .4s}
-.prog-dot.done{background:var(--teal)}
-.prog-dot.active{background:linear-gradient(90deg,var(--teal),var(--gold))}
-.step-panel{display:none}
-.step-panel.active{display:block;animation:fadeStep .4s ease}
-@keyframes fadeStep{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.step-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}
-.step-title{font-family:'Instrument Serif',serif;font-size:1.6rem;margin-bottom:.5rem}
-.step-sub{font-size:.78rem;color:var(--muted);line-height:1.8;margin-bottom:2rem}
-.step-sub strong{color:var(--gold)}
-.field-row{display:flex;border:1px solid var(--rim);transition:border-color .2s}
-.field-row:focus-within{border-color:rgba(0,212,200,.5)}
-.field-input{flex:1;background:transparent;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--white);padding:1rem 1.2rem}
-.field-input::placeholder{color:rgba(240,238,234,.25)}
-.field-btn{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;background:linear-gradient(135deg,var(--teal),var(--gold));color:var(--void);border:none;padding:1rem 1.5rem;cursor:none;font-weight:700;transition:opacity .2s;white-space:nowrap}
-.field-btn:disabled{opacity:.5}
-.otp-wrap{display:flex;gap:.6rem;justify-content:center;margin:1.5rem 0}
-.otp-digit{width:52px;height:64px;background:rgba(255,255,255,.03);border:1px solid var(--rim);font-family:'Space Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--white);text-align:center;outline:none;transition:border-color .2s}
-.otp-digit:focus{border-color:var(--teal)}
-.otp-digit.filled{border-color:rgba(0,212,200,.4)}
-.otp-actions{display:flex;flex-direction:column;gap:.8rem}
-.otp-submit{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.1em;background:linear-gradient(135deg,var(--teal),var(--gold));color:var(--void);border:none;padding:1rem;cursor:none;font-weight:700;width:100%;transition:opacity .2s,transform .15s}
-.otp-submit:hover:not(:disabled){transform:translateY(-2px)}
-.otp-submit:disabled{opacity:.5}
-.otp-resend{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.08em;background:none;border:1px solid var(--rim);color:var(--muted);padding:.7rem;cursor:none;transition:all .2s}
-.otp-resend:hover:not(:disabled){border-color:var(--teal);color:var(--teal)}
-.otp-resend:disabled{opacity:.4}
-.countdown{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);text-align:center;margin-top:.6rem}
-.inline-msg{display:none;font-size:.75rem;padding:.8rem 1rem;margin-top:.8rem;border-left:2px solid;line-height:1.7}
-.inline-msg.error{background:rgba(255,87,87,.08);border-color:var(--danger);color:#ff9999}
-.inline-msg.info{background:rgba(0,212,200,.06);border-color:var(--teal);color:rgba(240,238,234,.7)}
-.inline-msg.show{display:block}
-.success-icon{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,rgba(0,212,200,.15),rgba(226,185,106,.15));border:1px solid rgba(0,212,200,.3);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 1.5rem;animation:popIn .5s cubic-bezier(.34,1.56,.64,1)}
-@keyframes popIn{from{transform:scale(0)}to{transform:scale(1)}}
-.ns-list{display:flex;flex-direction:column;border-top:1px solid var(--rim);margin-top:1.5rem}
-.ns{display:flex;gap:1.2rem;padding:1.2rem 0;border-bottom:1px solid var(--rim);align-items:flex-start}
-.ns-i{font-size:1.1rem;min-width:28px}
-.ns-t{font-size:.82rem;font-weight:500;margin-bottom:.3rem}
-.ns-d{font-size:.75rem;color:var(--muted);line-height:1.75}
-.contact-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--rim)}
-.c-pill{font-size:.7rem;border:1px solid var(--rim);padding:.5rem 1rem;color:var(--teal);text-decoration:none;letter-spacing:.05em;transition:all .2s;cursor:none}
-.c-pill:hover{background:rgba(0,212,200,.1);border-color:var(--teal)}
-.count-row{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);margin-top:1.5rem;letter-spacing:.08em}
-.count-row span{color:var(--gold)}
-.help-section{position:relative;z-index:1;padding:6rem 4rem;background:var(--deep);border-top:1px solid var(--rim);text-align:center}
-.help-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rim);max-width:680px;margin:2.5rem auto 0}
-.help-card{background:var(--deep);padding:2.5rem 2rem;text-decoration:none;display:block;transition:background .3s}
-.help-card:hover{background:rgba(0,212,200,.03)}
-.help-icon{font-size:1.8rem;margin-bottom:1rem}
-.help-label{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem}
-.help-val{font-size:.92rem;font-weight:500;color:var(--white);margin-bottom:.4rem}
-.help-note{font-size:.68rem;color:var(--muted)}
-footer{position:relative;z-index:1;padding:2rem 4rem;border-top:1px solid var(--rim);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;background:var(--void)}
-footer p{font-size:.65rem;color:rgba(240,238,234,.2);letter-spacing:.06em}
-footer a{font-size:.65rem;color:rgba(240,238,234,.25);text-decoration:none;transition:color .2s}
-footer a:hover{color:var(--teal)}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
-.reveal.visible{opacity:1;transform:none}
-@media(max-width:900px){
-  nav{padding:1.2rem 1.5rem}
-  .hero,.section,.wl-section,.help-section,footer{padding-left:1.5rem;padding-right:1.5rem}
-  .bento{grid-template-columns:1fr}
-  .how-wrap{grid-template-columns:1fr}
-  .terminal{display:none}
-  .hero-stats{gap:2rem;flex-wrap:wrap}
-  .wl-card{padding:2rem}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(5,8,16,0.95);
+  border-bottom:1px solid rgba(0,212,200,0.2);
+  padding:1rem 2rem;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.logo{
+  font-size:1.6rem;font-weight:bold;font-style:italic;
+  color:#00d4c8;text-decoration:none;
+}
+.nav-btn{
+  background:transparent;border:1px solid #00d4c8;
+  color:#00d4c8;padding:0.5rem 1.2rem;
+  font-size:0.85rem;cursor:pointer;
+  font-weight:bold;letter-spacing:0.05em;
+}
+.nav-btn:hover{background:#00d4c8;color:#050810}
+
+/* HERO */
+.hero{
+  padding:5rem 2rem 4rem;
+  text-align:center;
+  background:radial-gradient(ellipse at center top, rgba(0,212,200,0.12) 0%, transparent 60%);
+  border-bottom:1px solid rgba(0,212,200,0.15);
+}
+.badge{
+  display:inline-block;
+  background:rgba(0,212,200,0.1);
+  border:1px solid rgba(0,212,200,0.3);
+  color:#00d4c8;padding:0.4rem 1rem;
+  font-size:0.75rem;letter-spacing:0.15em;
+  text-transform:uppercase;margin-bottom:2rem;
+}
+.hero h1{
+  font-size:clamp(2.5rem,7vw,5.5rem);
+  font-weight:900;line-height:1.05;
+  color:#f0eeea;margin-bottom:1.5rem;
+}
+.hero h1 span{color:#00d4c8}
+.hero p{
+  font-size:1.1rem;color:rgba(240,238,234,0.6);
+  max-width:500px;margin:0 auto 2.5rem;line-height:1.8;
+}
+.hero-btn{
+  display:inline-block;
+  background:linear-gradient(135deg,#00d4c8,#e2b96a);
+  color:#050810;padding:1rem 2.5rem;
+  font-size:1rem;font-weight:bold;
+  border:none;cursor:pointer;letter-spacing:0.05em;
+  text-decoration:none;
+}
+.hero-btn:hover{opacity:0.9}
+.hero-note{display:block;font-size:0.8rem;color:rgba(240,238,234,0.35);margin-top:1rem}
+
+/* STATS */
+.stats{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:0;border-top:1px solid rgba(0,212,200,0.15);
+  margin-top:4rem;padding-top:3rem;
+}
+.stat{padding:1rem 2.5rem;text-align:center}
+.stat-n{font-size:2.8rem;font-weight:900;color:#f0eeea}
+.stat-n b{color:#00d4c8}
+.stat-l{font-size:0.7rem;color:rgba(240,238,234,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.3rem}
+
+/* TICKER */
+.ticker{
+  overflow:hidden;padding:0.9rem 0;
+  background:rgba(0,212,200,0.03);
+  border-top:1px solid rgba(0,212,200,0.1);
+  border-bottom:1px solid rgba(0,212,200,0.1);
+  white-space:nowrap;
+}
+.ticker-inner{
+  display:inline-block;
+  animation:tick 30s linear infinite;
+  font-size:0.7rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:rgba(0,212,200,0.45);
+}
+.ticker-inner span{margin:0 2.5rem}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* FEATURES */
+.features{padding:5rem 2rem;text-align:center}
+.section-tag{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#00d4c8;margin-bottom:1rem}
+.section-title{font-size:clamp(1.8rem,4vw,3rem);font-weight:900;color:#f0eeea;margin-bottom:3rem;line-height:1.1}
+.section-title span{color:#e2b96a}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(0,212,200,0.1);max-width:900px;margin:0 auto}
+.card{background:#070b18;padding:2rem;text-align:left}
+.card-num{font-size:0.65rem;letter-spacing:0.15em;color:rgba(0,212,200,0.4);margin-bottom:1.2rem}
+.card-icon{font-size:1.5rem;margin-bottom:1rem}
+.card-title{font-size:1rem;font-weight:bold;color:#f0eeea;margin-bottom:0.6rem}
+.card-desc{font-size:0.82rem;color:rgba(240,238,234,0.5);line-height:1.75}
+
+/* WAITLIST */
+.waitlist{
+  padding:6rem 2rem;text-align:center;
+  background:radial-gradient(ellipse at center bottom, rgba(0,212,200,0.08) 0%, transparent 60%);
+  border-top:1px solid rgba(0,212,200,0.15);
+}
+.wl-card{
+  max-width:480px;margin:2.5rem auto 0;
+  background:#0a0f1e;border:1px solid rgba(0,212,200,0.2);
+  padding:2.5rem;position:relative;
+}
+.wl-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,#00d4c8,#e2b96a,transparent);
+}
+
+/* PROGRESS */
+.progress{display:flex;gap:6px;margin-bottom:2rem}
+.pd{height:3px;flex:1;background:rgba(255,255,255,0.1)}
+.pd.active{background:linear-gradient(90deg,#00d4c8,#e2b96a)}
+.pd.done{background:#00d4c8}
+
+/* STEPS */
+.step{display:none}
+.step.show{display:block}
+.step-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#00d4c8;margin-bottom:0.5rem}
+.step-title{font-size:1.5rem;font-weight:900;color:#f0eeea;margin-bottom:0.5rem}
+.step-sub{font-size:0.82rem;color:rgba(240,238,234,0.5);margin-bottom:1.8rem;line-height:1.7}
+.step-sub strong{color:#e2b96a}
+
+/* EMAIL INPUT */
+.email-row{display:flex;border:1px solid rgba(0,212,200,0.3)}
+.email-row:focus-within{border-color:#00d4c8}
+.email-in{
+  flex:1;background:transparent;border:none;outline:none;
+  color:#f0eeea;font-size:0.9rem;padding:0.9rem 1rem;
+}
+.email-in::placeholder{color:rgba(240,238,234,0.25)}
+.send-btn{
+  background:linear-gradient(135deg,#00d4c8,#e2b96a);
+  color:#050810;border:none;
+  font-size:0.7rem;font-weight:bold;letter-spacing:0.08em;
+  padding:0.9rem 1.2rem;cursor:pointer;white-space:nowrap;
+}
+.send-btn:disabled{opacity:0.5}
+
+/* OTP */
+.otp-row{display:flex;gap:0.5rem;justify-content:center;margin:1.5rem 0}
+.otp-d{
+  width:50px;height:60px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(0,212,200,0.2);
+  color:#f0eeea;font-size:1.5rem;font-weight:bold;
+  text-align:center;outline:none;
+}
+.otp-d:focus{border-color:#00d4c8}
+.verify-btn{
+  width:100%;
+  background:linear-gradient(135deg,#00d4c8,#e2b96a);
+  color:#050810;border:none;
+  font-size:0.82rem;font-weight:bold;letter-spacing:0.08em;
+  padding:1rem;cursor:pointer;margin-bottom:0.8rem;
+}
+.verify-btn:disabled{opacity:0.5}
+.resend-btn{
+  width:100%;background:transparent;
+  border:1px solid rgba(0,212,200,0.2);
+  color:rgba(240,238,234,0.4);
+  font-size:0.75rem;padding:0.7rem;cursor:pointer;
+}
+.resend-btn:hover:not(:disabled){border-color:#00d4c8;color:#00d4c8}
+.resend-btn:disabled{opacity:0.4}
+.countdown{font-size:0.7rem;color:rgba(240,238,234,0.35);text-align:center;margin-top:0.6rem}
+
+/* MSG */
+.msg{display:none;font-size:0.78rem;padding:0.8rem 1rem;margin-top:0.8rem;text-align:left;line-height:1.6}
+.msg.err{background:rgba(255,87,87,0.08);border-left:2px solid #ff5757;color:#ff9999}
+.msg.ok{background:rgba(0,212,200,0.06);border-left:2px solid #00d4c8;color:rgba(240,238,234,0.7)}
+.msg.show{display:block}
+
+/* SUCCESS */
+.success-icon{
+  width:60px;height:60px;border-radius:50%;
+  background:rgba(0,212,200,0.1);border:1px solid rgba(0,212,200,0.4);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;margin:0 auto 1.2rem;
+}
+.ns-list{margin-top:1.5rem;border-top:1px solid rgba(0,212,200,0.15)}
+.ns{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(0,212,200,0.1);text-align:left}
+.ns-icon{font-size:1.1rem;min-width:26px}
+.ns-title{font-size:0.85rem;font-weight:bold;color:#f0eeea;margin-bottom:0.3rem}
+.ns-desc{font-size:0.75rem;color:rgba(240,238,234,0.45);line-height:1.6}
+.cpills{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid rgba(0,212,200,0.15)}
+.cpill{font-size:0.72rem;border:1px solid rgba(0,212,200,0.25);padding:0.5rem 0.9rem;color:#00d4c8;text-decoration:none}
+
+.count-row{font-size:0.72rem;color:rgba(240,238,234,0.35);margin-top:1.2rem;letter-spacing:0.06em}
+.count-row b{color:#e2b96a}
+
+/* HELP */
+.help{padding:4rem 2rem;background:#070b18;border-top:1px solid rgba(0,212,200,0.15);text-align:center}
+.help-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,212,200,0.1);max-width:600px;margin:2rem auto 0}
+.help-card{background:#070b18;padding:2rem 1.5rem;text-decoration:none;display:block}
+.help-card:hover{background:rgba(0,212,200,0.04)}
+.help-icon{font-size:1.6rem;margin-bottom:0.8rem}
+.help-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#00d4c8;margin-bottom:0.4rem}
+.help-val{font-size:0.9rem;font-weight:bold;color:#f0eeea;margin-bottom:0.3rem}
+.help-note{font-size:0.68rem;color:rgba(240,238,234,0.3)}
+
+/* FOOTER */
+footer{
+  padding:1.5rem 2rem;background:#050810;
+  border-top:1px solid rgba(0,212,200,0.1);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.8rem;
+}
+footer p{font-size:0.65rem;color:rgba(240,238,234,0.2)}
+footer a{font-size:0.65rem;color:rgba(240,238,234,0.25);text-decoration:none}
+footer a:hover{color:#00d4c8}
+
+@media(max-width:600px){
+  .stats{flex-direction:column;gap:1rem}
   .help-cards{grid-template-columns:1fr}
-  .otp-digit{width:44px;height:56px;font-size:1.3rem}
+  .email-row{flex-direction:column}
+  .send-btn{padding:0.9rem}
+  .otp-d{width:44px;height:54px;font-size:1.3rem}
 }
 </style>
 </head>
 <body>
-<canvas id="starfield"></canvas>
-<div id="cur"></div>
-<div id="cur-ring"></div>
 
-<nav id="nav">
-  <a class="nav-logo" href="#">Axova</a>
+<nav>
+  <a class="logo" href="#">Axova</a>
   <button class="nav-btn" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Join Waitlist</button>
 </nav>
 
-<section class="hero" id="home">
-  <div class="hero-glow"></div>
-  <div class="hero-eyebrow">Early Access Open &mdash; Limited Spots</div>
-  <h1>
-    <span>Your business</span>
-    <span class="line2">automated,</span>
-    <span class="line3">effortlessly.</span>
-  </h1>
-  <p class="hero-sub">Axova deploys AI agents that run your workflows around the clock &mdash; so your team spends zero time on tasks that should just happen automatically.</p>
-  <div class="hero-actions">
-    <button class="btn-hero" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Get Early Access &rarr;</button>
-    <span class="hero-hint">Free tier available &middot; No credit card</span>
-  </div>
-  <div class="hero-stats">
-    <div><div class="stat-num">10<span>x</span></div><div class="stat-label">Faster than manual</div></div>
-    <div><div class="stat-num">98<span>%</span></div><div class="stat-label">Task accuracy</div></div>
-    <div><div class="stat-num">24<span>/7</span></div><div class="stat-label">Always running</div></div>
-    <div><div class="stat-num">200<span>+</span></div><div class="stat-label">App integrations</div></div>
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">&#9679; Early Access Open — Limited Spots</div>
+  <h1>Your business,<br/><span>automated</span><br/>effortlessly.</h1>
+  <p>Axova deploys AI agents that run your workflows 24/7 — so your team stops wasting time on tasks that should just happen automatically.</p>
+  <button class="hero-btn" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Get Early Access &rarr;</button>
+  <span class="hero-note">Free tier available &middot; No credit card required</span>
+  <div class="stats">
+    <div class="stat"><div class="stat-n">10<b>x</b></div><div class="stat-l">Faster than manual</div></div>
+    <div class="stat"><div class="stat-n">98<b>%</b></div><div class="stat-l">Task accuracy</div></div>
+    <div class="stat"><div class="stat-n">24<b>/7</b></div><div class="stat-l">Always running</div></div>
+    <div class="stat"><div class="stat-n">200<b>+</b></div><div class="stat-l">App integrations</div></div>
   </div>
 </section>
 
+<!-- TICKER -->
 <div class="ticker">
-  <div class="ticker-track">
+  <div class="ticker-inner">
     <span>AI Agents</span><span>Workflow Automation</span><span>Document Intelligence</span><span>CRM Sync</span><span>Email Automation</span><span>Smart Scheduling</span><span>Data Pipelines</span><span>Lead Qualification</span><span>Invoice Processing</span>
     <span>AI Agents</span><span>Workflow Automation</span><span>Document Intelligence</span><span>CRM Sync</span><span>Email Automation</span><span>Smart Scheduling</span><span>Data Pipelines</span><span>Lead Qualification</span><span>Invoice Processing</span>
   </div>
 </div>
 
-<section class="section" id="features">
-  <div class="section-tag reveal">// What Axova does</div>
-  <h2 class="section-title reveal">Built for the work<br/>that never <em>stops</em></h2>
-  <div class="bento">
-    <div class="bento-card"><div class="bento-num">01</div><div class="bento-icon">&#9889;</div><div class="bento-title">Intelligent Agents</div><p class="bento-desc">Autonomous AI agents handle complex multi-step tasks from lead qualification to invoice processing without supervision.</p></div>
-    <div class="bento-card"><div class="bento-num">02</div><div class="bento-icon">&#128279;</div><div class="bento-title">Deep Integrations</div><p class="bento-desc">Connect Slack, Notion, Salesforce, HubSpot, Gmail and 200+ more apps with our zero-code flow builder.</p></div>
-    <div class="bento-card"><div class="bento-num">03</div><div class="bento-icon">&#129504;</div><div class="bento-title">Decision Intelligence</div><p class="bento-desc">AI reads your data and makes smart routing decisions in milliseconds. Logic that learns and adapts over time.</p></div>
-    <div class="bento-card"><div class="bento-num">04</div><div class="bento-icon">&#128196;</div><div class="bento-title">Document Extraction</div><p class="bento-desc">Parse contracts, receipts, emails and reports automatically. Turn documents into structured, actionable data.</p></div>
-    <div class="bento-card"><div class="bento-num">05</div><div class="bento-icon">&#128202;</div><div class="bento-title">Live Dashboards</div><p class="bento-desc">Monitor every automation in real time. Spot bottlenecks, measure ROI and audit every agent decision.</p></div>
-    <div class="bento-card"><div class="bento-num">06</div><div class="bento-icon">&#128274;</div><div class="bento-title">Enterprise Security</div><p class="bento-desc">SOC 2 compliant. Role-based access, encrypted pipelines and on-premise deployment for regulated industries.</p></div>
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-tag">// What Axova does</div>
+  <h2 class="section-title">Built for the work<br/>that never <span>stops</span></h2>
+  <div class="cards">
+    <div class="card"><div class="card-num">01</div><div class="card-icon">&#9889;</div><div class="card-title">Intelligent Agents</div><p class="card-desc">Autonomous AI agents handle complex multi-step tasks from lead qualification to invoice processing without supervision.</p></div>
+    <div class="card"><div class="card-num">02</div><div class="card-icon">&#128279;</div><div class="card-title">Deep Integrations</div><p class="card-desc">Connect Slack, Notion, Salesforce, HubSpot, Gmail and 200+ more apps with our zero-code flow builder.</p></div>
+    <div class="card"><div class="card-num">03</div><div class="card-icon">&#129504;</div><div class="card-title">Decision Intelligence</div><p class="card-desc">AI reads your data and makes smart routing decisions in milliseconds. Logic that learns and adapts over time.</p></div>
+    <div class="card"><div class="card-num">04</div><div class="card-icon">&#128196;</div><div class="card-title">Document Extraction</div><p class="card-desc">Parse contracts, receipts, emails and reports automatically. Turn documents into structured, actionable data.</p></div>
+    <div class="card"><div class="card-num">05</div><div class="card-icon">&#128202;</div><div class="card-title">Live Dashboards</div><p class="card-desc">Monitor every automation in real time. Spot bottlenecks, measure ROI and audit every agent decision.</p></div>
+    <div class="card"><div class="card-num">06</div><div class="card-icon">&#128274;</div><div class="card-title">Enterprise Security</div><p class="card-desc">SOC 2 compliant. Role-based access, encrypted pipelines and on-premise deployment for regulated industries.</p></div>
   </div>
 </section>
 
-<section class="section" id="how" style="background:var(--deep)">
-  <div class="section-tag reveal">// How it works</div>
-  <h2 class="section-title reveal">From description<br/>to <em>running</em> in minutes</h2>
-  <div class="how-wrap">
-    <div>
-      <div class="how-step"><div class="step-n">01</div><div class="step-content"><h3>Connect your tools</h3><p>Authorize your apps in one click. Axova maps your data landscape and surfaces automation opportunities instantly.</p></div></div>
-      <div class="how-step"><div class="step-n">02</div><div class="st
+<!-- WAITLIST -->
+<section class="waitlist" id="waitlist">
+  <div class="section-tag">// Early access</div>
+  <h2 class="section-title">Be first.<br/>Automate <span>everything</span>.</h2>
+  <p style="font-size:0.9rem;color:rgba(240,238,234,0.5);max-width:400px;margin:0 auto;line-height:1.8">Join the waitlist and get 3 months free when we launch. A verification code will be sent to your inbox instantly.</p>
+
+  <div class="wl-card">
+    <div class="progress">
+      <div class="pd active" id="p1"></div>
+      <div class="pd" id="p2"></div>
+      <div class="pd" id="p3"></div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step show" id="s1">
+      <div class="step-label">Step 1 of 2</div>
+      <div class="step-title">Enter your email</div>
+      <div class="step-sub">We will send a 6-digit code to verify your spot on the waitlist.</div>
+      <div class="email-row">
+        <input class="email-in" id="emailIn" type="email" placeholder="you@company.com"/>
+        <button class="send-btn" id="sendBtn" onclick="sendCode()">Send Code</button>
+      </div>
+      <div class="msg" id="m1"></div>
+      <div class="count-row">Join <b id="countNum">847</b> others already waiting</div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step" id="s2">
+      <div class="step-label">Step 2 of 2</div>
+      <div class="step-title">Check your inbox</div>
+      <div class="step-sub">6-digit code sent to <strong id="sentTo"></strong></div>
+      <div class="otp-row">
+        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d0"/>
+        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d1"/>
+        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d2"/>
+        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d3"/>
+        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d4"/>
+        <input class="otp-d" maxlength="1" type="tel" inputmode="numeric" id="d5"/>
+      </div>
+      <div class="msg" id="m2"></div>
+      <button class="verify-btn" id="verifyBtn" onclick="verifyCode()">Verify and Join</button>
+      <button class="resend-btn" id="resendBtn" onclick="resendCode()" disabled>Resend code</button>
+      <div class="countdown" id="cd">Resend in <span id="timer">60</span>s</div>
+    </div>
+
+    <!-- STEP 3 SUCCESS -->
+    <div class="step" id="s3">
+      <div class="success-icon">&#9989;</div>
+      <div class="step-title" style="text-align:center">You are in!</div>
+      <div class="step-sub" style="text-align:center">Spot <strong id="spotNum">#848</strong> confirmed. Welcome to Axova!</div>
+      <div class="ns-list">
+        <div class="ns"><div class="ns-icon">&#128236;</div><div><div class="ns-title">Welcome email sent</div><div class="ns-desc">Check your inbox for confirmation and early access details.</div></div></div>
+        <div class="ns"><div class="ns-icon">&#128640;</div><div><div class="ns-title">Early access, 2 weeks ahead</div><div class="ns-desc">You get in before the public with 3 months free on any plan.</div></div></div>
+        <div class="ns"><div class="ns-icon">&#129309;</div><div><div class="ns-title">Personal onboarding call</div><div class="ns-desc">We will build your first automation together on a live call.</div></div></div>
+      </div>
+      <div class="cpills">
+        <a href="tel:+254757358744" class="cpill">&#128222; +254 757 358 744</a>
+        <a href="mailto:obilomoses191@gmail.com" class="cpill">&#9993; obilomoses191@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HELP -->
+<section class="help">
+  <div class="section-tag">// Support</div>
+  <h2 class="section-title">Talk to a <span>real person</span></h2>
+  <div class="help-cards">
+    <a href="tel:+254757358744" class="help-card">
+      <div class="help-icon">&#128222;</div>
+      <div class="help-label">Call us</div>
+      <div class="help-val">+254 757 358 744</div>
+      <div class="help-note">Mon-Fri 9am-6pm EAT</div>
+    </a>
+    <a href="mailto:obilomoses191@gmail.com" class="help-card">
+      <div class="help-icon">&#9993;</div>
+      <div class="help-label">Email us</div>
+      <div class="help-val">obilomoses191@gmail.com</div>
+      <div class="help-note">Reply within 24 hours</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 AXOVA TECHNOLOGIES INC.</p>
+  <div style="display:flex;gap:1.2rem">
+    <a href="tel:+254757358744">+254 757 358 744</a>
+    <a href="mailto:obilomoses191@gmail.com">obilomoses191@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+var currentEmail='', codeVal='', resendTimer=null, count=847;
+
+function showStep(n){
+  document.querySelectorAll('.step').forEach(function(s,i){
+    s.classList.toggle('show', i===n-1);
+  });
+  ['p1','p2','p3'].forEach(function(id,i){
+    var d=document.getElementById(id);
+    d.className='pd';
+    if(i<n-1) d.className='pd done';
+    else if(i===n-1) d.className='pd active';
+  });
+}
+
+function showMsg(id,type,text){
+  var el=document.getElementById(id);
+  el.className='msg '+type+' show';
+  el.innerHTML=text;
+}
+function hideMsg(id){document.getElementById(id).className='msg'}
+
+async function sendCode(){
+  var email=document.getElementById('emailIn').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    showMsg('m1','err','Please enter a valid email address.');return;
+  }
+  currentEmail=email;
+  codeVal=String(Math.floor(100000+Math.random()*900000));
+  count++;
+  var btn=document.getElementById('sendBtn');
+  btn.textContent='Sending...';btn.disabled=true;
+  hideMsg('m1');
+  try{
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      to_email: email,
+      code: codeVal,
+      spot: count
+    });
+    document.getElementById('sentTo').textContent=email;
+    document.getElementById('spotNum').textContent='#'+count;
+    document.getElementById('countNum').textContent=count;
+    showStep(2);
+    document.getElementById('d0').focus();
+    startCountdown();
+  } catch(e){
+    btn.textContent='Send Code';btn.disabled=false;
+    showMsg('m1','err','Could not send email. Please try again or email us directly at obilomoses191@gmail.com');
+  }
+}
+
+// OTP inputs
+document.querySelectorAll('.otp-d').forEach(function(inp,i,all){
+  inp.addEventListener('input',function(){
+    inp.value=inp.value.replace(/\D/,'');
+    if(inp.value&&i<5)all[i+1].focus();
+  });
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Backspace'&&!inp.value&&i>0)all[i-1].focus();
+  });
+  inp.addEventListener('paste',function(e){
+    e.preventDefault();
+    var t=(e.clipboardData||window.clipboardData).getData('text').replace(/\D/g,'').slice(0,6);
+    t.split('').forEach(function(ch,j){if(all[j])all[j].value=ch});
+    if(t.length>0)all[Math.min(t.length,5)].focus();
+  });
+});
+
+function getOTP(){
+  return Array.from(document.querySelectorAll('.otp-d')).map(function(d){return d.value}).join('');
+}
+
+async function verifyCode(){
+  var entered=getOTP();
+  if(entered.length<6){showMsg('m2','err','Please enter all 6 digits.');
