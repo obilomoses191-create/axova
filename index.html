@@ -8,7 +8,7 @@
 <script>
 const EMAILJS_PUBLIC_KEY  = 'BETBwCkk8rde3odvp';
 const EMAILJS_SERVICE_ID  = 'service_es4iiiz';
-const EMAILJS_TEMPLATE_ID = 'zp248uq';
+const EMAILJS_TEMPLATE_ID = 'template_5hkbkgm';
 const FORMSPREE_URL       = 'https://formspree.io/f/xzdkwvoz';
 emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 </script>
@@ -346,7 +346,7 @@ footer a:hover{color:#00d4c8}
       </div>
       <div class="cpills">
         <a href="tel:+254757358744" class="cpill">&#128222; +254 757 358 744</a>
-        <a href="mailto:obilomoses191@gmail.com" class="cpill">&#9993; obilomoses191@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#c5aaa7aca9aaa8aab6a0b6f4fcf485a2a8a4aca9eba6aaa8" class="cpill">&#9993; <span class="__cf_email__" data-cfemail="c9a6aba0a5a6a4a6baacbaf8f0f889aea4a8a0a5e7aaa6a4">[email&#160;protected]</span></a>
       </div>
     </div>
   </div>
@@ -363,10 +363,10 @@ footer a:hover{color:#00d4c8}
       <div class="help-val">+254 757 358 744</div>
       <div class="help-note">Mon-Fri 9am-6pm EAT</div>
     </a>
-    <a href="mailto:obilomoses191@gmail.com" class="help-card">
+    <a href="/cdn-cgi/l/email-protection#8fe0ede6e3e0e2e0fceafcbeb6becfe8e2eee6e3a1ece0e2" class="help-card">
       <div class="help-icon">&#9993;</div>
       <div class="help-label">Email us</div>
-      <div class="help-val">obilomoses191@gmail.com</div>
+      <div class="help-val"><span class="__cf_email__" data-cfemail="f8979a91949795978b9d8bc9c1c9b89f95999194d69b9795">[email&#160;protected]</span></div>
       <div class="help-note">Reply within 24 hours</div>
     </a>
   </div>
@@ -376,11 +376,11 @@ footer a:hover{color:#00d4c8}
   <p>&copy; 2025 AXOVA TECHNOLOGIES INC.</p>
   <div style="display:flex;gap:1.2rem">
     <a href="tel:+254757358744">+254 757 358 744</a>
-    <a href="mailto:obilomoses191@gmail.com">obilomoses191@gmail.com</a>
+    <a href="/cdn-cgi/l/email-protection#bad5d8d3d6d5d7d5c9dfc98b838bfaddd7dbd3d694d9d5d7"><span class="__cf_email__" data-cfemail="bad5d8d3d6d5d7d5c9dfc98b838bfaddd7dbd3d694d9d5d7">[email&#160;protected]</span></a>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var currentEmail='', codeVal='', resendTimer=null, count=847;
 
 function showStep(n){
@@ -439,19 +439,4 @@ document.querySelectorAll('.otp-d').forEach(function(inp,i,all){
   });
   inp.addEventListener('keydown',function(e){
     if(e.key==='Backspace'&&!inp.value&&i>0)all[i-1].focus();
-  });
-  inp.addEventListener('paste',function(e){
-    e.preventDefault();
-    var t=(e.clipboardData||window.clipboardData).getData('text').replace(/\D/g,'').slice(0,6);
-    t.split('').forEach(function(ch,j){if(all[j])all[j].value=ch});
-    if(t.length>0)all[Math.min(t.length,5)].focus();
-  });
-});
-
-function getOTP(){
-  return Array.from(document.querySelectorAll('.otp-d')).map(function(d){return d.value}).join('');
-}
-
-async function verifyCode(){
-  var entered=getOTP();
-  if(entered.length<6){showMsg('m2','err','Please enter all 6 digits.');
+  }
